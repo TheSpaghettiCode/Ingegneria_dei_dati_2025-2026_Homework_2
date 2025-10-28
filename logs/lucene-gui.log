@@ -1,0 +1,34 @@
+ott 28, 2025 6:26:19 PM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 5 file
+ott 28, 2025 6:26:19 PM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+ott 28, 2025 6:27:21 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "Lucene"
+ott 28, 2025 6:27:39 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "Ingegneria"
+ott 28, 2025 6:28:05 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "invertito"
+ott 28, 2025 6:28:15 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "invertito"
+ott 28, 2025 6:28:49 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "informazioni"
+ott 28, 2025 6:30:17 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "tokenizzazione"
+ott 28, 2025 6:30:19 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "tokenizzazione"
+ott 28, 2025 6:30:21 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "tokenizzazione"
+ott 28, 2025 6:30:27 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "tokenizzazione"
+ott 28, 2025 6:36:34 PM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 5 file
+ott 28, 2025 6:36:34 PM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+ott 28, 2025 6:37:00 PM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 5 file
+ott 28, 2025 6:37:00 PM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+ott 28, 2025 6:37:32 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "Lucene"
+ott 28, 2025 6:37:51 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "Lucene applicano"

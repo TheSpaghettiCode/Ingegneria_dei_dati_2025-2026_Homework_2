@@ -1,0 +1,3 @@
+Lucene è una libreria di informationi retrieval ad alte prestazioni, scritta interamente in Java.
+È adatta per qualsiasi applicazione che richieda ricerca full-text, specialmente ricerca cross-platform.
+Apache Lucene è un progetto open source, disponibile sotto la licenza Apache.

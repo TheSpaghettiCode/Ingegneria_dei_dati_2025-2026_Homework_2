@@ -1,0 +1,3 @@
+L'information retrieval (IR) è la scienza di cercare informazioni in documenti, cercare metadati che descrivono documenti, o cercare all'interno di database.
+I sistemi IR, come i motori di ricerca, aiutano gli utenti a trovare le informazioni di cui hanno bisogno.
+Un sistema IR elabora, memorizza e gestisce l'informazione per recuperare documenti rilevanti per una query dell'utente.

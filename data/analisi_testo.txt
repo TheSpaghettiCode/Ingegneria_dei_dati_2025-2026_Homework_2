@@ -1,0 +1,3 @@
+L'analisi del testo è il processo di estrazione di informazioni significative da testi non strutturati.
+Tecniche come tokenizzazione, stemming e lemmatizzazione sono fondamentali per l'analisi del testo.
+Gli analyzer in Lucene applicano queste tecniche per migliorare la qualità della ricerca.

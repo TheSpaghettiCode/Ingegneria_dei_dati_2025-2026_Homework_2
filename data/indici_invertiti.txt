@@ -1,0 +1,3 @@
+Un indice invertito è una struttura dati utilizzata dai motori di ricerca per memorizzare il mapping da contenuto a posizione.
+È chiamato "invertito" perché inverte la relazione documento-contenuto.
+Lucene utilizza indici invertiti per ottimizzare le operazioni di ricerca e recupero.

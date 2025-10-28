@@ -1,0 +1,3 @@
+Java è un linguaggio di programmazione orientato agli oggetti creato da James Gosling e altri ingegneri di Sun Microsystems.
+È stato rilasciato nel 1995 come componente principale della piattaforma Java di Sun Microsystems.
+Il linguaggio deriva gran parte della sua sintassi da C e C++, ma ha meno funzionalità di basso livello.
