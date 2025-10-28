@@ -1,6 +1,6 @@
 # Sistema di Ricerca basato su Lucene
 
-Questo progetto implementa un sistema di ricerca basato su Apache Lucene per l'indicizzazione e la ricerca di file di testo.
+Questo progetto implementa un sistema di ricerca basato su Apache Lucene per l'indicizzazione e la ricerca di file di testo, con un'interfaccia grafica intuitiva.
 
 ## Requisiti di Sistema
 
@@ -12,12 +12,15 @@ Questo progetto implementa un sistema di ricerca basato su Apache Lucene per l'i
 - `src/main/java/it/uniroma1/lucene/`: Contiene i file sorgente Java
   - `Indexer.java`: Classe per l'indicizzazione dei file di testo
   - `Searcher.java`: Classe per la ricerca nell'indice
-  - `Main.java`: Classe principale per l'esecuzione del programma
+  - `Main.java`: Classe principale per l'esecuzione del programma da linea di comando
+  - `LuceneGUI.java`: Classe per l'interfaccia grafica utente
   - `TestQueries.java`: Classe per testare automaticamente diverse query
 
 - `data/`: Contiene i file di testo di esempio
 - `index/`: Directory dove viene salvato l'indice creato
 - `lib/`: Contiene le librerie Lucene necessarie
+- `logs/`: Contiene i file di log dell'applicazione
+- `src/main/resources/`: Contiene i file di localizzazione per l'interfaccia grafica
 
 ## Utilizzo
 
@@ -33,6 +36,8 @@ javac -cp "lib/*" -d target/classes src/main/java/it/uniroma1/lucene/*.java
 
 ### Esecuzione
 
+#### Interfaccia a Linea di Comando
+
 ```bash
 # Su Windows
 java -cp "target/classes;lib/*" it.uniroma1.lucene.Main
@@ -41,12 +46,23 @@ java -cp "target/classes;lib/*" it.uniroma1.lucene.Main
 java -cp "target/classes:lib/*" it.uniroma1.lucene.Main
 ```
 
+#### Interfaccia Grafica (GUI)
+
+```bash
+# Su Windows
+java -cp "target/classes;lib/*" it.uniroma1.lucene.LuceneGUI
+
+# Su Linux/Mac
+java -cp "target/classes:lib/*" it.uniroma1.lucene.LuceneGUI
+```
+
 ### Indicizzazione
 
 Il programma indicizzerà automaticamente i file nella directory `data/` all'avvio. Se la directory `data/` non esiste, verrà creata automaticamente. Se la directory `index/` non esiste, verrà creata automaticamente.
 
 ### Ricerca
 
+#### Tramite Linea di Comando
 Dopo l'avvio, è possibile inserire query di ricerca. Il programma supporta:
 
 - Ricerca semplice: `lucene` o `java`
@@ -55,6 +71,17 @@ Dopo l'avvio, è possibile inserire query di ricerca. Il programma supporta:
 - Ricerca combinata: `nome:documento contenuto:java`
 
 Per uscire, digitare `exit`.
+
+#### Tramite Interfaccia Grafica
+L'interfaccia grafica offre:
+
+- Campo di ricerca con validazione in tempo reale
+- Opzioni per filtrare la ricerca per nome file e/o contenuto
+- Visualizzazione dei risultati in una tabella con nome file, snippet e punteggio
+- Tema scuro predefinito per una migliore leggibilità
+- Sezione per salvare e riutilizzare query preimpostate
+- Supporto per più lingue (italiano e inglese)
+- Scorciatoie da tastiera per le operazioni comuni
 
 ## Esempi di Query
 
@@ -95,6 +122,29 @@ Il sistema di ricerca supporta:
 
 - `filename`: Nome del file (indicizzato come TextField)
 - `content`: Contenuto del file (indicizzato come TextField)
+
+## Funzionalità dell'Interfaccia Grafica
+
+### Tema Scuro
+- L'interfaccia utilizza un tema scuro predefinito per ridurre l'affaticamento visivo
+- Tutti i componenti sono ottimizzati per la leggibilità con colori contrastanti
+
+### Opzioni di Ricerca Avanzate
+- Checkbox interattivi per filtrare la ricerca per nome file e/o contenuto
+- Feedback visivo immediato sullo stato delle opzioni selezionate
+- Tooltip informativi per guidare l'utente nell'utilizzo
+
+### Query Preimpostate
+- Pannello dedicato per salvare e gestire query frequentemente utilizzate
+- Funzionalità per aggiungere, modificare e rimuovere query personalizzate
+- Selezione rapida per inserire automaticamente le query nel campo di ricerca
+- Salvataggio automatico delle query tra diverse sessioni
+
+### Altre Caratteristiche
+- Supporto multilingua (italiano e inglese)
+- Logging automatico delle operazioni
+- Scorciatoie da tastiera per le operazioni comuni
+- Visualizzazione dettagliata dei risultati con snippet contestuali
 
 ## Risoluzione Problemi
 

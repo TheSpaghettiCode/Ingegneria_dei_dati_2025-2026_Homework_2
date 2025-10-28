@@ -32,3 +32,21 @@ ott 28, 2025 6:37:32 PM it.uniroma1.lucene.LuceneGUI performSearch
 INFORMAZIONI: Esecuzione query: "Lucene"
 ott 28, 2025 6:37:51 PM it.uniroma1.lucene.LuceneGUI performSearch
 INFORMAZIONI: Esecuzione query: "Lucene applicano"
+ott 28, 2025 6:43:58 PM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 5 file
+ott 28, 2025 6:43:58 PM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+ott 28, 2025 6:45:06 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: filename:document1, content:java
+ott 28, 2025 6:45:17 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: filename:document, content:java
+ott 28, 2025 6:45:24 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: filename:docu, content:java
+ott 28, 2025 6:45:36 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: filename:docu, content:pippo
+ott 28, 2025 6:46:25 PM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 5 file
+ott 28, 2025 6:46:25 PM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+ott 28, 2025 6:46:28 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: memorizza e gestisce l'informazione per recuperare documenti
