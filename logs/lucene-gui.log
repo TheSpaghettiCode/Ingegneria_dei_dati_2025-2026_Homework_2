@@ -128,3 +128,475 @@ nov 02, 2025 4:10:54 PM it.uniroma3.lucene.LuceneGUI <init>
 INFORMAZIONI: Applicazione avviata con successo
 nov 02, 2025 4:11:35 PM it.uniroma3.lucene.LuceneGUI reindexFiles
 INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 4:17:52 PM it.uniroma3.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 4:17:52 PM it.uniroma3.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+nov 02, 2025 4:18:17 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: token
+nov 02, 2025 4:18:17 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: token
+nov 02, 2025 4:18:23 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: documento
+nov 02, 2025 4:18:31 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: docume
+nov 02, 2025 4:18:33 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: docum
+nov 02, 2025 4:18:34 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: doc
+nov 02, 2025 4:18:37 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: a
+nov 02, 2025 4:22:34 PM it.uniroma3.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 4:22:34 PM it.uniroma3.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+nov 02, 2025 4:26:26 PM it.uniroma3.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 4:26:26 PM it.uniroma3.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+nov 02, 2025 4:26:54 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: roma tre
+nov 02, 2025 4:27:09 PM it.uniroma3.lucene.LuceneGUI reindexFiles
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 4:34:03 PM it.uniroma3.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 4:34:04 PM it.uniroma3.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+nov 02, 2025 4:34:08 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: lucene
+nov 02, 2025 4:34:29 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento1
+nov 02, 2025 4:34:31 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento1
+nov 02, 2025 4:34:33 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento1
+nov 02, 2025 4:34:39 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento1
+nov 02, 2025 4:34:43 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: contenuto:"analisi del testo"
+nov 02, 2025 4:34:45 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: contenuto:"analisi del testo"
+nov 02, 2025 4:34:46 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: contenuto:"analisi del testo"
+nov 02, 2025 4:34:46 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: contenuto:"analisi del testo"
+nov 02, 2025 4:34:48 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:analisi
+nov 02, 2025 4:34:50 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:analisi
+nov 02, 2025 4:34:51 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:analisi
+nov 02, 2025 4:34:53 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento contenuto:java
+nov 02, 2025 4:34:53 PM it.uniroma3.lucene.LuceneGUI performSearch
+AVVERTENZA: Errore durante la ricerca
+org.apache.lucene.queryparser.classic.ParseException: Cannot parse '  ': Encountered "<EOF>" at line 1, column 2.
+Was expecting one of:
+    <NOT> ...
+    "+" ...
+    "-" ...
+    <BAREOPER> ...
+    "(" ...
+    "*" ...
+    <QUOTED> ...
+    <TERM> ...
+    <PREFIXTERM> ...
+    <WILDTERM> ...
+    <REGEXPTERM> ...
+    "[" ...
+    "{" ...
+    <NUMBER> ...
+    <TERM> ...
+    
+	at org.apache.lucene.queryparser.classic.QueryParserBase.parse(QueryParserBase.java:140)
+	at it.uniroma3.lucene.Searcher.parseQuery(Searcher.java:223)
+	at it.uniroma3.lucene.Searcher.search(Searcher.java:78)
+	at it.uniroma3.lucene.LuceneGUI.performSearch(LuceneGUI.java:534)
+	at it.uniroma3.lucene.LuceneGUI.lambda$12(LuceneGUI.java:685)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1967)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2308)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:405)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:369)
+	at java.desktop/javax.swing.plaf.basic.BasicMenuItemUI.doClick(BasicMenuItemUI.java:1020)
+	at java.desktop/javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(BasicMenuItemUI.java:1064)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6635)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3342)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6400)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2263)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5011)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2321)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4843)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4918)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4547)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4488)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2307)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2772)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4843)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:772)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:95)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:743)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Caused by: org.apache.lucene.queryparser.classic.ParseException: Encountered "<EOF>" at line 1, column 2.
+Was expecting one of:
+    <NOT> ...
+    "+" ...
+    "-" ...
+    <BAREOPER> ...
+    "(" ...
+    "*" ...
+    <QUOTED> ...
+    <TERM> ...
+    <PREFIXTERM> ...
+    <WILDTERM> ...
+    <REGEXPTERM> ...
+    "[" ...
+    "{" ...
+    <NUMBER> ...
+    <TERM> ...
+    
+	at org.apache.lucene.queryparser.classic.QueryParser.generateParseException(QueryParser.java:1004)
+	at org.apache.lucene.queryparser.classic.QueryParser.jj_consume_token(QueryParser.java:867)
+	at org.apache.lucene.queryparser.classic.QueryParser.Query(QueryParser.java:260)
+	at org.apache.lucene.queryparser.classic.QueryParser.TopLevelQuery(QueryParser.java:223)
+	at org.apache.lucene.queryparser.classic.QueryParserBase.parse(QueryParserBase.java:136)
+	... 41 more
+
+nov 02, 2025 4:35:00 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento contenuto:java
+nov 02, 2025 4:35:00 PM it.uniroma3.lucene.LuceneGUI performSearch
+AVVERTENZA: Errore durante la ricerca
+org.apache.lucene.queryparser.classic.ParseException: Cannot parse '  ': Encountered "<EOF>" at line 1, column 2.
+Was expecting one of:
+    <NOT> ...
+    "+" ...
+    "-" ...
+    <BAREOPER> ...
+    "(" ...
+    "*" ...
+    <QUOTED> ...
+    <TERM> ...
+    <PREFIXTERM> ...
+    <WILDTERM> ...
+    <REGEXPTERM> ...
+    "[" ...
+    "{" ...
+    <NUMBER> ...
+    <TERM> ...
+    
+	at org.apache.lucene.queryparser.classic.QueryParserBase.parse(QueryParserBase.java:140)
+	at it.uniroma3.lucene.Searcher.parseQuery(Searcher.java:223)
+	at it.uniroma3.lucene.Searcher.search(Searcher.java:78)
+	at it.uniroma3.lucene.LuceneGUI.performSearch(LuceneGUI.java:534)
+	at it.uniroma3.lucene.LuceneGUI.lambda$6(LuceneGUI.java:301)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1967)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2308)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:405)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:279)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6635)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3342)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6400)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2263)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5011)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2321)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4843)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4918)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4547)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4488)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2307)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2772)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4843)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:772)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:95)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:743)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Caused by: org.apache.lucene.queryparser.classic.ParseException: Encountered "<EOF>" at line 1, column 2.
+Was expecting one of:
+    <NOT> ...
+    "+" ...
+    "-" ...
+    <BAREOPER> ...
+    "(" ...
+    "*" ...
+    <QUOTED> ...
+    <TERM> ...
+    <PREFIXTERM> ...
+    <WILDTERM> ...
+    <REGEXPTERM> ...
+    "[" ...
+    "{" ...
+    <NUMBER> ...
+    <TERM> ...
+    
+	at org.apache.lucene.queryparser.classic.QueryParser.generateParseException(QueryParser.java:1004)
+	at org.apache.lucene.queryparser.classic.QueryParser.jj_consume_token(QueryParser.java:867)
+	at org.apache.lucene.queryparser.classic.QueryParser.Query(QueryParser.java:260)
+	at org.apache.lucene.queryparser.classic.QueryParser.TopLevelQuery(QueryParser.java:223)
+	at org.apache.lucene.queryparser.classic.QueryParserBase.parse(QueryParserBase.java:136)
+	... 39 more
+
+nov 02, 2025 4:36:11 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: lucene
+nov 02, 2025 4:36:12 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: lucene
+nov 02, 2025 4:36:14 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: java
+nov 02, 2025 4:36:15 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: java
+nov 02, 2025 4:36:17 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento
+nov 02, 2025 4:36:20 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: contenuto:java
+nov 02, 2025 4:36:24 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento contenuto:java
+nov 02, 2025 4:36:24 PM it.uniroma3.lucene.LuceneGUI performSearch
+AVVERTENZA: Errore durante la ricerca
+org.apache.lucene.queryparser.classic.ParseException: Cannot parse '  ': Encountered "<EOF>" at line 1, column 2.
+Was expecting one of:
+    <NOT> ...
+    "+" ...
+    "-" ...
+    <BAREOPER> ...
+    "(" ...
+    "*" ...
+    <QUOTED> ...
+    <TERM> ...
+    <PREFIXTERM> ...
+    <WILDTERM> ...
+    <REGEXPTERM> ...
+    "[" ...
+    "{" ...
+    <NUMBER> ...
+    <TERM> ...
+    
+	at org.apache.lucene.queryparser.classic.QueryParserBase.parse(QueryParserBase.java:140)
+	at it.uniroma3.lucene.Searcher.parseQuery(Searcher.java:223)
+	at it.uniroma3.lucene.Searcher.search(Searcher.java:78)
+	at it.uniroma3.lucene.LuceneGUI.performSearch(LuceneGUI.java:534)
+	at it.uniroma3.lucene.LuceneGUI.lambda$12(LuceneGUI.java:685)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1967)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2308)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:405)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:369)
+	at java.desktop/javax.swing.plaf.basic.BasicMenuItemUI.doClick(BasicMenuItemUI.java:1020)
+	at java.desktop/javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(BasicMenuItemUI.java:1064)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6635)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3342)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6400)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2263)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5011)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2321)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4843)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4918)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4547)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4488)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2307)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2772)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4843)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:772)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:95)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:743)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Caused by: org.apache.lucene.queryparser.classic.ParseException: Encountered "<EOF>" at line 1, column 2.
+Was expecting one of:
+    <NOT> ...
+    "+" ...
+    "-" ...
+    <BAREOPER> ...
+    "(" ...
+    "*" ...
+    <QUOTED> ...
+    <TERM> ...
+    <PREFIXTERM> ...
+    <WILDTERM> ...
+    <REGEXPTERM> ...
+    "[" ...
+    "{" ...
+    <NUMBER> ...
+    <TERM> ...
+    
+	at org.apache.lucene.queryparser.classic.QueryParser.generateParseException(QueryParser.java:1004)
+	at org.apache.lucene.queryparser.classic.QueryParser.jj_consume_token(QueryParser.java:867)
+	at org.apache.lucene.queryparser.classic.QueryParser.Query(QueryParser.java:260)
+	at org.apache.lucene.queryparser.classic.QueryParser.TopLevelQuery(QueryParser.java:223)
+	at org.apache.lucene.queryparser.classic.QueryParserBase.parse(QueryParserBase.java:136)
+	... 41 more
+
+nov 02, 2025 4:39:03 PM it.uniroma3.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 4:39:03 PM it.uniroma3.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+nov 02, 2025 4:39:08 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:analisi
+nov 02, 2025 4:39:13 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento1
+nov 02, 2025 4:39:18 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: contenuto:"analisi del testo"
+nov 02, 2025 4:39:21 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "information retrieval"
+nov 02, 2025 4:39:25 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento
+nov 02, 2025 4:39:27 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: java
+nov 02, 2025 4:39:29 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: lucene
+nov 02, 2025 4:39:31 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento contenuto:java
+nov 02, 2025 4:39:31 PM it.uniroma3.lucene.LuceneGUI performSearch
+AVVERTENZA: Errore durante la ricerca
+org.apache.lucene.queryparser.classic.ParseException: Cannot parse '  ': Encountered "<EOF>" at line 1, column 2.
+Was expecting one of:
+    <NOT> ...
+    "+" ...
+    "-" ...
+    <BAREOPER> ...
+    "(" ...
+    "*" ...
+    <QUOTED> ...
+    <TERM> ...
+    <PREFIXTERM> ...
+    <WILDTERM> ...
+    <REGEXPTERM> ...
+    "[" ...
+    "{" ...
+    <NUMBER> ...
+    <TERM> ...
+    
+	at org.apache.lucene.queryparser.classic.QueryParserBase.parse(QueryParserBase.java:140)
+	at it.uniroma3.lucene.Searcher.parseQuery(Searcher.java:223)
+	at it.uniroma3.lucene.Searcher.search(Searcher.java:78)
+	at it.uniroma3.lucene.LuceneGUI.performSearch(LuceneGUI.java:534)
+	at it.uniroma3.lucene.LuceneGUI.lambda$12(LuceneGUI.java:685)
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1967)
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2308)
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:405)
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)
+	at java.desktop/javax.swing.AbstractButton.doClick(AbstractButton.java:369)
+	at java.desktop/javax.swing.plaf.basic.BasicMenuItemUI.doClick(BasicMenuItemUI.java:1020)
+	at java.desktop/javax.swing.plaf.basic.BasicMenuItemUI$Handler.mouseReleased(BasicMenuItemUI.java:1064)
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6635)
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3342)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6400)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2263)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5011)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2321)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4843)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4918)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4547)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4488)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2307)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2772)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4843)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:772)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:721)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:715)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:95)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:743)
+	at java.base/java.security.AccessController.doPrivileged(Native Method)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:742)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)
+Caused by: org.apache.lucene.queryparser.classic.ParseException: Encountered "<EOF>" at line 1, column 2.
+Was expecting one of:
+    <NOT> ...
+    "+" ...
+    "-" ...
+    <BAREOPER> ...
+    "(" ...
+    "*" ...
+    <QUOTED> ...
+    <TERM> ...
+    <PREFIXTERM> ...
+    <WILDTERM> ...
+    <REGEXPTERM> ...
+    "[" ...
+    "{" ...
+    <NUMBER> ...
+    <TERM> ...
+    
+	at org.apache.lucene.queryparser.classic.QueryParser.generateParseException(QueryParser.java:1004)
+	at org.apache.lucene.queryparser.classic.QueryParser.jj_consume_token(QueryParser.java:867)
+	at org.apache.lucene.queryparser.classic.QueryParser.Query(QueryParser.java:260)
+	at org.apache.lucene.queryparser.classic.QueryParser.TopLevelQuery(QueryParser.java:223)
+	at org.apache.lucene.queryparser.classic.QueryParserBase.parse(QueryParserBase.java:136)
+	... 41 more
+
+nov 02, 2025 4:49:08 PM it.uniroma3.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 4:49:08 PM it.uniroma3.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+nov 02, 2025 4:49:13 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento1
+nov 02, 2025 4:49:25 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: contenuto:"analisi del testo"
+nov 02, 2025 4:49:27 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:analisi
+nov 02, 2025 4:49:31 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento
+nov 02, 2025 4:49:33 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: lucene
+nov 02, 2025 4:49:34 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: java
+nov 02, 2025 4:49:35 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento
+nov 02, 2025 4:49:44 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: contenuto:java
+nov 02, 2025 4:49:48 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento contenuto:java
+nov 02, 2025 4:49:49 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: nome:documento contenuto:java
+nov 02, 2025 4:49:56 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "information retrieval"
+nov 02, 2025 4:50:05 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: information retrieval
+nov 02, 2025 4:50:10 PM it.uniroma3.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: "information retrieval"

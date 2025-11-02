@@ -301,8 +301,17 @@ public class LuceneGUI extends JFrame {
         searchButton.addActionListener(e -> performSearch());
         getRootPane().setDefaultButton(searchButton);
         
+        JButton exampleQueriesButton = new JButton("Query di Esempio");
+        exampleQueriesButton.setToolTipText("Mostra esempi di query predefinite");
+        exampleQueriesButton.addActionListener(e -> showExampleQueries());
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 0));
+        buttonPanel.setBackground(new Color(60, 63, 65));
+        buttonPanel.add(exampleQueriesButton);
+        buttonPanel.add(searchButton);
+        
         inputPanel.add(searchField, BorderLayout.CENTER);
-        inputPanel.add(searchButton, BorderLayout.EAST);
+        inputPanel.add(buttonPanel, BorderLayout.EAST);
         
         searchPanel.add(inputPanel, BorderLayout.CENTER);
         
@@ -534,10 +543,21 @@ public class LuceneGUI extends JFrame {
             }
             
             updateStatus(String.format(messages.getString("status.resultsFound"), results.size()));
+            
+            // Mostra un messaggio se non ci sono risultati
+            if (results.isEmpty()) {
+                JOptionPane.showMessageDialog(this, 
+                    "Nessun risultato trovato per la query: \"" + query + "\"\n\n" +
+                    "Suggerimenti:\n" +
+                    "- Controlla eventuali errori di battitura\n" +
+                    "- Prova termini più generici\n" +
+                    "- Usa prefissi 'nome:' o 'contenuto:' per cercare in campi specifici", 
+                    "Nessun risultato", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             logger.log(Level.WARNING, "Errore durante la ricerca", e);
             updateStatus(messages.getString("status.searchError") + ": " + e.getMessage());
-            showError(messages.getString("error.search"), e.getMessage());
+            showError(messages.getString("error.search"), e.getMessage() + "\n\nDettagli: " + e.toString());
         }
     }
     
@@ -647,6 +667,64 @@ public class LuceneGUI extends JFrame {
                 messages.getString("dialog.about.content"),
                 messages.getString("dialog.about.title"),
                 JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    /**
+     * Mostra un menu con le query di esempio
+     */
+    private void showExampleQueries() {
+        // Definizione delle query di esempio
+        String[][] exampleQueries = {
+            {"Ricerca semplice: lucene", "lucene"},
+            {"Ricerca semplice: java", "java"},
+            {"Ricerca nel nome: documento", "nome:documento"},
+            {"Ricerca nel contenuto: java", "contenuto:java"},
+            {"Ricerca combinata: nome e contenuto", "nome:documento contenuto:java"},
+            {"Ricerca frase: information retrieval", "\"information retrieval\""},
+            {"Ricerca frase nel contenuto: analisi del testo", "contenuto:\"analisi del testo\""},
+            {"Ricerca documento specifico: documento1", "nome:documento1"},
+            {"Ricerca documento specifico: analisi", "nome:analisi"}
+        };
+        
+        // Creazione del menu popup
+        JPopupMenu popupMenu = new JPopupMenu();
+        
+        for (String[] query : exampleQueries) {
+            JMenuItem menuItem = new JMenuItem(query[0]);
+            menuItem.addActionListener(e -> {
+                searchField.setText(query[1]);
+                performSearch();
+            });
+            popupMenu.add(menuItem);
+        }
+        
+        // Aggiungi le query di esempio alla lista di preset
+        for (String[] query : exampleQueries) {
+            if (!presetQueries.contains(query[1])) {
+                presetQueries.add(query[1]);
+            }
+        }
+        
+        // Cerca il pulsante "Query di Esempio" nell'interfaccia
+        Component buttonComp = null;
+        for (Component comp : ((JPanel)searchField.getParent()).getComponents()) {
+            if (comp instanceof JPanel) {
+                for (Component btn : ((JPanel)comp).getComponents()) {
+                    if (btn instanceof JButton && "Query di Esempio".equals(((JButton) btn).getText())) {
+                        buttonComp = btn;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // Mostra il menu vicino al pulsante o al campo di ricerca
+        if (buttonComp != null) {
+            popupMenu.show(buttonComp, 0, buttonComp.getHeight());
+        } else {
+            // Fallback: mostra vicino al campo di ricerca
+            popupMenu.show(searchField, 0, searchField.getHeight());
+        }
     }
     
     /**

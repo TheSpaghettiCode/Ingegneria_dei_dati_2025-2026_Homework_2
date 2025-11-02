@@ -1,0 +1,20 @@
+2025-11-02 16:49:13 | NO_RESULTS | nome:documento1
+2025-11-02 16:49:13 | NO_RESULTS | nome:documento1
+2025-11-02 16:49:25 | NO_RESULTS | contenuto:"analisi del testo"
+2025-11-02 16:49:25 | NO_RESULTS | contenuto:"analisi del testo"
+2025-11-02 16:49:27 | NO_RESULTS | nome:analisi
+2025-11-02 16:49:27 | NO_RESULTS | nome:analisi
+2025-11-02 16:49:31 | NO_RESULTS | nome:documento
+2025-11-02 16:49:31 | NO_RESULTS | nome:documento
+2025-11-02 16:49:35 | NO_RESULTS | nome:documento
+2025-11-02 16:49:35 | NO_RESULTS | nome:documento
+2025-11-02 16:49:56 | NO_RESULTS | "information retrieval"
+2025-11-02 16:49:56 | NO_RESULTS | "information retrieval"
+2025-11-02 16:50:01 | ERROR | "information retrieval | Cannot parse '"information retrieval': Lexical error at line 1, column 23.  Encountered: <EOF> after prefix "\"information retrieval" (in lexical state 2)
+2025-11-02 16:50:10 | NO_RESULTS | "information retrieval"
+2025-11-02 16:50:10 | NO_RESULTS | "information retrieval"
+2025-11-02 17:16:42 | NO_RESULTS | nome:documento
+2025-11-02 17:16:42 | NO_RESULTS | nome:documento contenuto:java
+2025-11-02 17:16:42 | NO_RESULTS | "information retrieval"
+2025-11-02 17:16:42 | NO_RESULTS | contenuto:"analisi del testo"
+2025-11-02 17:16:42 | NO_RESULTS | nome:analisi

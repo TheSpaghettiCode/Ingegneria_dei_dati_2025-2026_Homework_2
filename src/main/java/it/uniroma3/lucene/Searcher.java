@@ -1,7 +1,6 @@
 package it.uniroma3.lucene;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.core.SimpleAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
@@ -13,6 +12,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.similarities.BM25Similarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
@@ -25,11 +25,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Classe per la ricerca nei file indicizzati.
  */
-public class Searcher {
+public class Searcher implements AutoCloseable {
+    private static final Logger LOGGER = Logger.getLogger(Searcher.class.getName());
+    private static final String QUERY_LOG_FILE = "query_log.txt";
+    
     private final IndexSearcher searcher;
     private final Analyzer filenameAnalyzer;
     private final Analyzer contentAnalyzer;
@@ -47,12 +56,16 @@ public class Searcher {
         Directory indexDirectory = FSDirectory.open(indexPath);
         IndexReader reader = DirectoryReader.open(indexDirectory);
         this.searcher = new IndexSearcher(reader);
+        this.searcher.setSimilarity(new BM25Similarity());
         
-        this.filenameAnalyzer = new SimpleAnalyzer();
+        // Utilizza StandardAnalyzer sia per filename che per content per coerenza con l'indicizzazione
+        this.filenameAnalyzer = new StandardAnalyzer();
         this.contentAnalyzer = new StandardAnalyzer();
         
         this.filenameParser = new QueryParser("filename", filenameAnalyzer);
+        this.filenameParser.setAllowLeadingWildcard(true);
         this.contentParser = new QueryParser("content", contentAnalyzer);
+        this.contentParser.setAllowLeadingWildcard(true);
         
         Map<String, Float> boosts = new HashMap<>();
         boosts.put("filename", 1.5f);  // Diamo un peso maggiore ai risultati che matchano il nome del file
@@ -64,6 +77,7 @@ public class Searcher {
                 contentAnalyzer,
                 boosts
         );
+        this.multiFieldParser.setAllowLeadingWildcard(true);
     }
 
     /**
@@ -75,22 +89,73 @@ public class Searcher {
      * @throws ParseException in caso di errori nel parsing della query
      */
     public List<SearchResult> search(String queryString, int maxResults) throws IOException, ParseException {
-        Query query = parseQuery(queryString);
-        TopDocs topDocs = searcher.search(query, maxResults);
+        LOGGER.info("Esecuzione query: " + queryString);
         
-        List<SearchResult> results = new ArrayList<>();
-        for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
-            Document doc = searcher.doc(scoreDoc.doc);
-            String filename = doc.get("filename");
-            String content = doc.get("content");
+        try {
+            Query query = parseQuery(queryString);
+            TopDocs topDocs = searcher.search(query, maxResults);
             
-            // Estrai uno snippet rilevante dal contenuto
-            String snippet = extractRelevantSnippet(content, queryString, 150);
+            List<SearchResult> results = new ArrayList<>();
+            for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
+                Document doc = searcher.doc(scoreDoc.doc);
+                String filename = doc.get("filename");
+                String content = doc.get("content");
+                
+                // Estrai uno snippet rilevante dal contenuto
+                String snippet = extractRelevantSnippet(content, queryString, 150);
+                
+                results.add(new SearchResult(filename, snippet, scoreDoc.score));
+            }
             
-            results.add(new SearchResult(filename, snippet, scoreDoc.score));
+            // Log delle query senza risultati
+            if (results.isEmpty()) {
+                LOGGER.warning("Nessun risultato trovato per la query: " + queryString);
+                logQueryWithNoResults(queryString);
+            } else {
+                LOGGER.info("Trovati " + results.size() + " risultati per la query: " + queryString);
+            }
+            
+            return results;
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Errore durante l'esecuzione della query: " + queryString, e);
+            logQueryError(queryString, e);
+            throw e;
         }
-        
-        return results;
+    }
+    
+    /**
+     * Registra le query che non hanno prodotto risultati in un file di log.
+     * @param queryString la query che non ha prodotto risultati
+     */
+    private void logQueryWithNoResults(String queryString) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String timestamp = dateFormat.format(new Date());
+            
+            try (PrintWriter writer = new PrintWriter(new FileWriter(QUERY_LOG_FILE, true))) {
+                writer.println(timestamp + " | NO_RESULTS | " + queryString);
+            }
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Impossibile scrivere nel file di log", e);
+        }
+    }
+    
+    /**
+     * Registra gli errori durante l'esecuzione delle query in un file di log.
+     * @param queryString la query che ha generato l'errore
+     * @param e l'eccezione generata
+     */
+    private void logQueryError(String queryString, Exception e) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String timestamp = dateFormat.format(new Date());
+            
+            try (PrintWriter writer = new PrintWriter(new FileWriter(QUERY_LOG_FILE, true))) {
+                writer.println(timestamp + " | ERROR | " + queryString + " | " + e.getMessage());
+            }
+        } catch (IOException ex) {
+            LOGGER.log(Level.SEVERE, "Impossibile scrivere nel file di log", ex);
+        }
     }
     
     /**
@@ -174,6 +239,14 @@ public class Searcher {
      * @throws ParseException in caso di errori nel parsing della query
      */
     private Query parseQuery(String queryString) throws ParseException {
+        // Verifica se la query è vuota o null
+        if (queryString == null || queryString.trim().isEmpty()) {
+            throw new ParseException("La query non può essere vuota");
+        }
+        
+        // Normalizza la query
+        queryString = queryString.trim();
+        
         // Pattern per riconoscere i prefissi "nome:" e "contenuto:"
         Pattern pattern = Pattern.compile("(nome|contenuto):(\"[^\"]*\"|\\S+)");
         Matcher matcher = pattern.matcher(queryString);
@@ -183,8 +256,10 @@ public class Searcher {
         StringBuilder generalQuery = new StringBuilder();
         
         int lastEnd = 0;
+        boolean hasSpecificField = false;
         
         while (matcher.find()) {
+            hasSpecificField = true;
             String prefix = matcher.group(1);
             String term = matcher.group(2);
             
@@ -208,24 +283,34 @@ public class Searcher {
         }
         
         // Se ci sono query specifiche per filename o content, usale
-        if (filenameQuery.length() > 0 || contentQuery.length() > 0) {
+        if (hasSpecificField) {
             List<Query> queries = new ArrayList<>();
             
             if (filenameQuery.length() > 0) {
-                queries.add(filenameParser.parse(filenameQuery.toString()));
+                queries.add(filenameParser.parse(filenameQuery.toString().trim()));
             }
             
             if (contentQuery.length() > 0) {
-                queries.add(contentParser.parse(contentQuery.toString()));
+                queries.add(contentParser.parse(contentQuery.toString().trim()));
             }
             
-            if (generalQuery.length() > 0) {
-                queries.add(multiFieldParser.parse(generalQuery.toString()));
+            if (generalQuery.length() > 0 && generalQuery.toString().trim().length() > 0) {
+                queries.add(multiFieldParser.parse(generalQuery.toString().trim()));
+            }
+            
+            if (queries.isEmpty()) {
+                // Fallback alla ricerca generale se qualcosa è andato storto
+                return multiFieldParser.parse(queryString);
             }
             
             // Combina le query con OR
             org.apache.lucene.search.BooleanQuery.Builder builder = new org.apache.lucene.search.BooleanQuery.Builder();
-            builder.add(queries.get(0), org.apache.lucene.search.BooleanClause.Occur.SHOULD);
+            
+            // Aggiungi tutte le query come MUST per interpretare prefissi multipli come vincoli da soddisfare
+            for (Query q : queries) {
+                builder.add(q, org.apache.lucene.search.BooleanClause.Occur.MUST);
+            }
+            
             return builder.build();
         } else {
             // Usa il multiFieldParser per cercare in entrambi i campi
@@ -237,6 +322,7 @@ public class Searcher {
      * Chiude le risorse.
      * @throws IOException in caso di errori di I/O
      */
+    @Override
     public void close() throws IOException {
         searcher.getIndexReader().close();
         filenameAnalyzer.close();
