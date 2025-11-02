@@ -9,7 +9,7 @@ Questo progetto implementa un sistema di ricerca basato su Apache Lucene per l'i
 
 ## Struttura del Progetto
 
-- `src/main/java/it/uniroma1/lucene/`: Contiene i file sorgente Java
+- `src/main/java/it/uniroma3/lucene/`: Contiene i file sorgente Java
   - `Indexer.java`: Classe per l'indicizzazione dei file di testo
   - `Searcher.java`: Classe per la ricerca nell'indice
   - `Main.java`: Classe principale per l'esecuzione del programma da linea di comando
@@ -28,10 +28,10 @@ Questo progetto implementa un sistema di ricerca basato su Apache Lucene per l'i
 
 ```bash
 # Su Windows
-javac -cp "lib/*" -d target/classes src/main/java/it/uniroma1/lucene/*.java
+javac -cp "lib/*" -d target/classes src/main/java/it/uniroma3/lucene/*.java
 
 # Su Linux/Mac
-javac -cp "lib/*" -d target/classes src/main/java/it/uniroma1/lucene/*.java
+javac -cp "lib/*" -d target/classes src/main/java/it/uniroma3/lucene/*.java
 ```
 
 ### Esecuzione
@@ -40,20 +40,20 @@ javac -cp "lib/*" -d target/classes src/main/java/it/uniroma1/lucene/*.java
 
 ```bash
 # Su Windows
-java -cp "target/classes;lib/*" it.uniroma1.lucene.Main
+java -cp "target/classes;lib/*" it.uniroma3.lucene.Main
 
 # Su Linux/Mac
-java -cp "target/classes:lib/*" it.uniroma1.lucene.Main
+java -cp "target/classes:lib/*" it.uniroma3.lucene.Main
 ```
 
 #### Interfaccia Grafica (GUI)
 
 ```bash
 # Su Windows
-java -cp "target/classes;lib/*" it.uniroma1.lucene.LuceneGUI
+java -cp "target/classes;lib/*" it.uniroma3.lucene.LuceneGUI
 
 # Su Linux/Mac
-java -cp "target/classes:lib/*" it.uniroma1.lucene.LuceneGUI
+java -cp "target/classes:lib/*" it.uniroma3.lucene.LuceneGUI
 ```
 
 ### Indicizzazione
@@ -95,10 +95,10 @@ Per eseguire il test automatico con query predefinite:
 
 ```bash
 # Su Windows
-java -cp "target/classes;lib/*" it.uniroma1.lucene.TestQueries
+java -cp "target/classes;lib/*" it.uniroma3.lucene.TestQueries
 
 # Su Linux/Mac
-java -cp "target/classes:lib/*" it.uniroma1.lucene.TestQueries
+java -cp "target/classes:lib/*" it.uniroma3.lucene.TestQueries
 ```
 
 ## Dettagli Implementativi

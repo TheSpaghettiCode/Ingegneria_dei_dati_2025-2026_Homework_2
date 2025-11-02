@@ -1,4 +1,4 @@
-package it.uniroma1.lucene;
+package it.uniroma3.lucene;
 
 import org.apache.lucene.queryparser.classic.ParseException;
 
