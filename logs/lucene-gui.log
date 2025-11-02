@@ -114,3 +114,7 @@ nov 02, 2025 2:19:19 PM it.uniroma3.lucene.LuceneGUI performSearch
 INFORMAZIONI: Esecuzione query: bello figo
 nov 02, 2025 2:19:25 PM it.uniroma3.lucene.LuceneGUI performSearch
 INFORMAZIONI: Esecuzione query: text
+nov 02, 2025 2:24:32 PM it.uniroma3.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 2:24:32 PM it.uniroma3.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
