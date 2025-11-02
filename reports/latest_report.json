@@ -1,0 +1,53 @@
+{
+  "averageFileProcessingTimeMs": 11.333333333333334,
+  "maxFileProcessingTimeMs": 65,
+  "fileMetrics": [
+    {
+    "fileName": "analisi_testo.txt",
+    "processingTimeMs": 65,
+    "successful": true
+  },
+    {
+    "fileName": "documento1.txt",
+    "processingTimeMs": 0,
+    "successful": true
+  },
+    {
+    "fileName": "documento2.txt",
+    "processingTimeMs": 2,
+    "successful": true
+  },
+    {
+    "fileName": "indici_invertiti.txt",
+    "processingTimeMs": 1,
+    "successful": true
+  },
+    {
+    "fileName": "ricerca_informazioni.txt",
+    "processingTimeMs": 0,
+    "successful": true
+  },
+    {
+    "fileName": "Roma_Tre.txt",
+    "processingTimeMs": 0,
+    "successful": true
+  }
+  ],
+  "failedFiles": 0,
+  "totalIndexingTimeMs": 262,
+  "successfulFiles": 6,
+  "totalFiles": 6,
+  "anomalies": [
+    {
+    "fileName": "analisi_testo.txt",
+    "processingTimeMs": 65,
+    "zScore": 2.2350335190717074,
+    "type": "slow"
+  }
+  ],
+  "errors": [
+
+  ],
+  "timestamp": "2025-11-02 15:18:57",
+  "minFileProcessingTimeMs": 0
+}

@@ -1,6 +1,14 @@
 # Sistema di Ricerca basato su Lucene
 
-Questo progetto implementa un sistema di ricerca basato su Apache Lucene per l'indicizzazione e la ricerca di file di testo, con un'interfaccia grafica intuitiva.
+Questo progetto implementa un sistema di ricerca basato su Apache Lucene per l'indicizzazione e la ricerca di file di testo, con un'interfaccia grafica intuitiva e un sistema di misurazione delle prestazioni.
+
+## Novità
+
+- **Sistema di Misurazione delle Prestazioni**: Implementazione di un sistema completo per la raccolta e l'analisi delle metriche di indicizzazione
+- **Reporting Automatico**: Generazione automatica di report in formato JSON e CSV
+- **Visualizzazione Grafica**: Interfaccia grafica per la visualizzazione delle metriche di indicizzazione
+- **Rilevamento Anomalie**: Sistema automatico per l'identificazione di anomalie nei tempi di elaborazione
+- **Integrazione GitHub**: Possibilità di salvare i report direttamente su GitHub e aggiornare schede tecniche
 
 ## Requisiti di Sistema
 
@@ -15,11 +23,15 @@ Questo progetto implementa un sistema di ricerca basato su Apache Lucene per l'i
   - `Main.java`: Classe principale per l'esecuzione del programma da linea di comando
   - `LuceneGUI.java`: Classe per l'interfaccia grafica utente
   - `TestQueries.java`: Classe per testare automaticamente diverse query
+  - `IndexingMetrics.java`: Classe per la raccolta e l'analisi delle metriche di indicizzazione
+  - `MetricsReporter.java`: Classe per la visualizzazione e il reporting delle metriche
+  - `GitHubReporter.java`: Classe per l'integrazione con GitHub
 
 - `data/`: Contiene i file di testo di esempio
 - `index/`: Directory dove viene salvato l'indice creato
 - `lib/`: Contiene le librerie Lucene necessarie
 - `logs/`: Contiene i file di log dell'applicazione
+- `reports/`: Contiene i report generati in formato JSON e CSV
 - `src/main/resources/`: Contiene i file di localizzazione per l'interfaccia grafica
 
 ## Utilizzo
@@ -60,6 +72,20 @@ java -cp "target/classes:lib/*" it.uniroma3.lucene.LuceneGUI
 
 Il programma indicizzerà automaticamente i file nella directory `data/` all'avvio. Se la directory `data/` non esiste, verrà creata automaticamente. Se la directory `index/` non esiste, verrà creata automaticamente.
 
+Durante l'indicizzazione, il sistema raccoglie automaticamente le seguenti metriche:
+- Tempo totale di indicizzazione
+- Tempo medio di elaborazione per file
+- Tempo massimo e minimo di elaborazione
+- Conteggio dei file elaborati con successo e falliti
+- Rilevamento di anomalie nei tempi di elaborazione
+
+### Reporting
+
+Al termine dell'indicizzazione, il sistema:
+1. Mostra un report grafico con tutte le metriche raccolte
+2. Salva automaticamente i report in formato JSON e CSV nella directory `reports/`
+3. Offre la possibilità di salvare i report su GitHub (richiede configurazione)
+
 ### Ricerca
 
 #### Tramite Linea di Comando
@@ -80,6 +106,32 @@ L'interfaccia grafica offre:
 - Visualizzazione dei risultati in una tabella con nome file, snippet e punteggio
 - Sezione per salvare e riutilizzare query preimpostate
 - Scorciatoie da tastiera per le operazioni comuni
+- Visualizzazione grafica delle metriche di indicizzazione
+
+## Configurazione dell'Integrazione GitHub
+
+Per utilizzare l'integrazione con GitHub:
+
+1. Aprire il file `Main.java`
+2. Decommentare la sezione relativa alla configurazione GitHub
+3. Inserire il proprio username, token di accesso e nome del repository
+4. Ricompilare il progetto
+
+```java
+// Configurazione per GitHub
+GitHubReporter githubReporter = new GitHubReporter(
+    "username",          // Il tuo username GitHub
+    "token",             // Il tuo token di accesso personale
+    "nome-repository",   // Il nome del tuo repository
+    "reports"            // Directory locale per i report
+);
+
+// Salva il report su GitHub
+githubReporter.saveReportToGitHub(indexer.getMetrics());
+
+// Aggiorna la scheda tecnica
+githubReporter.updateTechnicalSheet(indexer.getMetrics());
+```
 
 ## Esempi di Query
 

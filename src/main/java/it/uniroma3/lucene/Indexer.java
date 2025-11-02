@@ -21,15 +21,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 /**
  * Classe per l'indicizzazione dei file di testo.
  * Utilizza SimpleAnalyzer per i nomi dei file e StandardAnalyzer per il contenuto.
+ * Integra un sistema di metriche per monitorare le performance di indicizzazione.
  */
 public class Indexer {
     private final Path indexPath;
     private final Analyzer filenameAnalyzer;
     private final Analyzer contentAnalyzer;
+    private IndexingMetrics metrics;
 
     /**
      * Costruttore dell'Indexer.
@@ -39,6 +43,15 @@ public class Indexer {
         this.indexPath = Paths.get(indexDirectoryPath);
         this.filenameAnalyzer = new SimpleAnalyzer();
         this.contentAnalyzer = new StandardAnalyzer();
+        this.metrics = new IndexingMetrics();
+    }
+    
+    /**
+     * Restituisce le metriche di indicizzazione.
+     * @return oggetto IndexingMetrics con le metriche raccolte
+     */
+    public IndexingMetrics getMetrics() {
+        return metrics;
     }
 
     /**
@@ -48,6 +61,9 @@ public class Indexer {
      * @throws IOException in caso di errori di I/O
      */
     public int createIndex(String dataDirectoryPath) throws IOException {
+        // Inizia la misurazione delle metriche
+        metrics.startIndexing();
+        
         // Crea la directory dell'indice se non esiste
         if (!Files.exists(indexPath)) {
             Files.createDirectories(indexPath);
@@ -71,7 +87,19 @@ public class Indexer {
                 throw new IOException("La directory dei dati non esiste: " + dataDirectoryPath);
             }
             
-            return indexDirectory(writer, dataDir);
+            int result = indexDirectory(writer, dataDir);
+            
+            // Termina la misurazione delle metriche
+            metrics.endIndexing();
+            
+            // Stampa un report di riepilogo
+            System.out.println(metrics.generateSummaryReport());
+            
+            return result;
+        } catch (IOException e) {
+            // Termina comunque la misurazione in caso di errore
+            metrics.endIndexing();
+            throw e;
         }
     }
 
@@ -107,23 +135,40 @@ public class Indexer {
      * @throws IOException in caso di errori di I/O
      */
     private int indexFile(IndexWriter writer, File file) throws IOException {
-        Document document = new Document();
+        long startTime = System.currentTimeMillis();
+        boolean successful = false;
+        String errorMessage = "";
         
-        // Aggiungi il nome del file come TextField (tokenizzato) per supportare query di frase
-        document.add(new TextField("filename", file.getName(), Field.Store.YES));
-        
-        // Leggi e aggiungi il contenuto del file come TextField (tokenizzato)
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            StringBuilder content = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                content.append(line).append("\n");
+        try {
+            Document document = new Document();
+            
+            // Aggiungi il nome del file come TextField (tokenizzato) per supportare query di frase
+            document.add(new TextField("filename", file.getName(), Field.Store.YES));
+            
+            // Leggi e aggiungi il contenuto del file come TextField (tokenizzato)
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                StringBuilder content = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    content.append(line).append("\n");
+                }
+                document.add(new TextField("content", content.toString(), Field.Store.YES));
             }
-            document.add(new TextField("content", content.toString(), Field.Store.YES));
+            
+            writer.addDocument(document);
+            successful = true;
+            return 1;
+        } catch (Exception e) {
+            // Cattura l'errore e lo registra nelle metriche
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            errorMessage = e.getMessage() + "\n" + sw.toString();
+            return 0;
+        } finally {
+            long processingTime = System.currentTimeMillis() - startTime;
+            metrics.recordFileMetric(file.getName(), processingTime, successful, errorMessage);
         }
-        
-        writer.addDocument(document);
-        return 1;
     }
 
     /**

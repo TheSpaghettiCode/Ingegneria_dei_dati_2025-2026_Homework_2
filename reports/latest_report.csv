@@ -1,0 +1,7 @@
+fileName,successful,processingTime,errorMessage
+analisi_testo.txt,true,65,""
+documento1.txt,true,0,""
+documento2.txt,true,2,""
+indici_invertiti.txt,true,1,""
+ricerca_informazioni.txt,true,0,""
+Roma_Tre.txt,true,0,""
