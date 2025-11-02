@@ -50,3 +50,57 @@ ott 28, 2025 6:46:25 PM it.uniroma1.lucene.LuceneGUI <init>
 INFORMAZIONI: Applicazione avviata con successo
 ott 28, 2025 6:46:28 PM it.uniroma1.lucene.LuceneGUI performSearch
 INFORMAZIONI: Esecuzione query: memorizza e gestisce l'informazione per recuperare documenti
+ott 29, 2025 2:39:27 AM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 5 file
+ott 29, 2025 2:39:27 AM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+ott 29, 2025 2:39:36 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: bella
+ott 29, 2025 2:39:41 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: bella
+ott 29, 2025 2:39:42 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: bella
+ott 29, 2025 2:39:47 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: ciao
+ott 29, 2025 2:39:55 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: numeri
+ott 29, 2025 2:40:59 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: i
+ott 29, 2025 2:41:49 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: di
+ott 29, 2025 2:42:01 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: e
+ott 29, 2025 2:42:38 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: memorizza e gestisce
+ott 29, 2025 2:42:40 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: memorizza e gestisce
+ott 29, 2025 2:43:11 AM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: memorizza e gestisce l'informazione per recuperare documenti rilevanti per una query dell'utente.
+ott 29, 2025 6:51:09 PM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 5 file
+ott 29, 2025 6:51:09 PM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+ott 29, 2025 6:51:45 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: la scienza di cercare informazioni
+nov 02, 2025 1:48:23 PM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 1:48:23 PM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+nov 02, 2025 1:48:51 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: 'Roma tre'
+nov 02, 2025 1:48:55 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: 'Roma tre'
+nov 02, 2025 1:48:56 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: 'Roma tre'
+nov 02, 2025 1:49:16 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: Roma Tre è un'università
+nov 02, 2025 1:49:38 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: tokenizzazione
+nov 02, 2025 1:50:06 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: oma Tre fu istituita recuperando aree industriali
+nov 02, 2025 1:51:47 PM it.uniroma1.lucene.LuceneGUI initializeLuceneSystem
+INFORMAZIONI: Indicizzati 6 file
+nov 02, 2025 1:51:47 PM it.uniroma1.lucene.LuceneGUI <init>
+INFORMAZIONI: Applicazione avviata con successo
+nov 02, 2025 1:51:58 PM it.uniroma1.lucene.LuceneGUI performSearch
+INFORMAZIONI: Esecuzione query: Roma Tre fu istituita recuperando aree industriali

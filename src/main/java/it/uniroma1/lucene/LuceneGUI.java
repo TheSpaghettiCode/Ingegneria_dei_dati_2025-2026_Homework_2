@@ -33,8 +33,6 @@ public class LuceneGUI extends JFrame {
     private JTextField searchField;
     private JTable resultsTable;
     private JLabel statusLabel;
-    private JToggleButton darkModeToggle;
-    private JComboBox<String> languageComboBox;
     
     // Modello della tabella
     private DefaultTableModel tableModel;
@@ -44,8 +42,6 @@ public class LuceneGUI extends JFrame {
     private Searcher searcher;
     private String indexPath = "index";
     private String dataPath = "data";
-    private boolean isDarkMode = true; // Tema scuro predefinito
-    private Locale currentLocale = Locale.getDefault();
     private ResourceBundle messages;
     private List<String> presetQueries = new java.util.ArrayList<>();
     private JList<String> presetQueryList;
@@ -79,8 +75,8 @@ public class LuceneGUI extends JFrame {
             // Creazione dell'interfaccia
             createUI();
             
-            // Applicazione del tema
-            applyTheme();
+            // Applicazione del tema scuro
+            setupDarkTheme();
             
             // Registrazione degli shortcut globali
             setupKeyboardShortcuts();
@@ -116,21 +112,16 @@ public class LuceneGUI extends JFrame {
      * Carica le preferenze dell'utente
      */
     private void loadPreferences() {
-        isDarkMode = prefs.getBoolean("darkMode", false);
         indexPath = prefs.get("indexPath", "index");
         dataPath = prefs.get("dataPath", "data");
-        String locale = prefs.get("locale", Locale.getDefault().toString());
-        currentLocale = Locale.forLanguageTag(locale.replace('_', '-'));
     }
     
     /**
      * Salva le preferenze dell'utente
      */
     private void savePreferences() {
-        prefs.putBoolean("darkMode", isDarkMode);
         prefs.put("indexPath", indexPath);
         prefs.put("dataPath", dataPath);
-        prefs.put("locale", currentLocale.toString());
     }
     
     /**
@@ -138,7 +129,7 @@ public class LuceneGUI extends JFrame {
      */
     private void initializeLocalization() {
         try {
-            messages = ResourceBundle.getBundle("messages", currentLocale);
+            messages = ResourceBundle.getBundle("messages", Locale.getDefault());
         } catch (Exception e) {
             // Fallback alla lingua di default
             messages = ResourceBundle.getBundle("messages", Locale.ENGLISH);
@@ -233,24 +224,6 @@ public class LuceneGUI extends JFrame {
         
         // Menu Visualizza
         JMenu viewMenu = new JMenu(messages.getString("menu.view"));
-        JCheckBoxMenuItem darkModeItem = new JCheckBoxMenuItem(messages.getString("menu.view.darkMode"));
-        darkModeItem.setSelected(isDarkMode);
-        darkModeItem.addActionListener(e -> {
-            isDarkMode = darkModeItem.isSelected();
-            darkModeToggle.setSelected(isDarkMode);
-            applyTheme();
-        });
-        
-        JMenu languageMenu = new JMenu(messages.getString("menu.view.language"));
-        JMenuItem italianItem = new JMenuItem("Italiano");
-        italianItem.addActionListener(e -> changeLanguage(Locale.ITALIAN));
-        JMenuItem englishItem = new JMenuItem("English");
-        englishItem.addActionListener(e -> changeLanguage(Locale.ENGLISH));
-        
-        languageMenu.add(italianItem);
-        languageMenu.add(englishItem);
-        viewMenu.add(darkModeItem);
-        viewMenu.add(languageMenu);
         
         // Menu Aiuto
         JMenu helpMenu = new JMenu(messages.getString("menu.help"));
@@ -444,29 +417,6 @@ public class LuceneGUI extends JFrame {
         JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
         rightPanel.setOpaque(false);
         
-        // Toggle per il tema scuro/chiaro
-        darkModeToggle = new JToggleButton(messages.getString("status.darkMode"));
-        darkModeToggle.setSelected(isDarkMode);
-        darkModeToggle.addActionListener(e -> {
-            isDarkMode = darkModeToggle.isSelected();
-            applyTheme();
-        });
-        
-        // Selezione della lingua
-        languageComboBox = new JComboBox<>(new String[] {"Italiano", "English"});
-        languageComboBox.setSelectedItem(currentLocale.equals(Locale.ITALIAN) ? "Italiano" : "English");
-        languageComboBox.addActionListener(e -> {
-            String selected = (String) languageComboBox.getSelectedItem();
-            if ("Italiano".equals(selected)) {
-                changeLanguage(Locale.ITALIAN);
-            } else {
-                changeLanguage(Locale.ENGLISH);
-            }
-        });
-        
-        rightPanel.add(darkModeToggle);
-        rightPanel.add(languageComboBox);
-        
         statusBar.add(statusLabel, BorderLayout.CENTER);
         statusBar.add(rightPanel, BorderLayout.EAST);
         
@@ -474,63 +424,59 @@ public class LuceneGUI extends JFrame {
     }
     
     /**
-     * Applica il tema all'interfaccia
+     * Configura il tema scuro
      */
-    private void applyTheme() {
+    private void setupDarkTheme() {
         try {
-            if (isDarkMode) {
-                // Tema scuro migliorato
-                UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-                UIManager.put("control", new Color(43, 43, 43));
-                UIManager.put("info", new Color(43, 43, 43));
-                UIManager.put("nimbusBase", new Color(0, 0, 0));
-                UIManager.put("nimbusAlertYellow", new Color(248, 187, 0));
-                UIManager.put("nimbusDisabledText", new Color(128, 128, 128));
-                UIManager.put("nimbusFocus", new Color(115, 164, 209));
-                UIManager.put("nimbusGreen", new Color(176, 179, 50));
-                UIManager.put("nimbusInfoBlue", new Color(66, 139, 221));
-                UIManager.put("nimbusLightBackground", new Color(18, 30, 49));
-                UIManager.put("nimbusOrange", new Color(191, 98, 4));
-                UIManager.put("nimbusRed", new Color(169, 46, 34));
-                UIManager.put("nimbusSelectedText", new Color(255, 255, 255));
-                UIManager.put("nimbusSelectionBackground", new Color(104, 93, 156));
-                UIManager.put("text", new Color(230, 230, 230));
-                
-                // Colori aggiuntivi per migliorare il tema scuro
-                UIManager.put("Table.background", new Color(50, 50, 50));
-                UIManager.put("Table.foreground", new Color(220, 220, 220));
-                UIManager.put("Table.selectionBackground", new Color(80, 80, 80));
-                UIManager.put("Table.selectionForeground", new Color(255, 255, 255));
-                UIManager.put("Table.gridColor", new Color(70, 70, 70));
-                
-                UIManager.put("TextField.background", new Color(60, 60, 60));
-                UIManager.put("TextField.foreground", new Color(220, 220, 220));
-                UIManager.put("TextField.caretForeground", new Color(220, 220, 220));
-                
-                UIManager.put("Button.background", new Color(60, 60, 60));
-                UIManager.put("Button.foreground", new Color(220, 220, 220));
-                
-                UIManager.put("Panel.background", new Color(50, 50, 50));
-                UIManager.put("Panel.foreground", new Color(220, 220, 220));
-                
-                UIManager.put("Label.foreground", new Color(220, 220, 220));
-                
-                UIManager.put("List.background", new Color(60, 60, 60));
-                UIManager.put("List.foreground", new Color(220, 220, 220));
-                UIManager.put("List.selectionBackground", new Color(80, 80, 80));
-                UIManager.put("List.selectionForeground", new Color(255, 255, 255));
-                
-                UIManager.put("TitledBorder.titleColor", new Color(220, 220, 220));
-                UIManager.put("MenuBar.background", new Color(60, 60, 60));
-                UIManager.put("MenuBar.foreground", Color.WHITE);
-                UIManager.put("Menu.background", new Color(60, 60, 60));
-                UIManager.put("Menu.foreground", Color.WHITE);
-                UIManager.put("MenuItem.background", new Color(60, 60, 60));
-                UIManager.put("MenuItem.foreground", Color.WHITE);
-            } else {
-                // Tema chiaro
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            }
+            // Tema scuro fisso
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+            UIManager.put("control", new Color(43, 43, 43));
+            UIManager.put("info", new Color(43, 43, 43));
+            UIManager.put("nimbusBase", new Color(0, 0, 0));
+            UIManager.put("nimbusAlertYellow", new Color(248, 187, 0));
+            UIManager.put("nimbusDisabledText", new Color(128, 128, 128));
+            UIManager.put("nimbusFocus", new Color(115, 164, 209));
+            UIManager.put("nimbusGreen", new Color(176, 179, 50));
+            UIManager.put("nimbusInfoBlue", new Color(66, 139, 221));
+            UIManager.put("nimbusLightBackground", new Color(18, 30, 49));
+            UIManager.put("nimbusOrange", new Color(191, 98, 4));
+            UIManager.put("nimbusRed", new Color(169, 46, 34));
+            UIManager.put("nimbusSelectedText", new Color(255, 255, 255));
+            UIManager.put("nimbusSelectionBackground", new Color(104, 93, 156));
+            UIManager.put("text", new Color(230, 230, 230));
+            
+            // Colori aggiuntivi per migliorare il tema scuro
+            UIManager.put("Table.background", new Color(50, 50, 50));
+            UIManager.put("Table.foreground", new Color(220, 220, 220));
+            UIManager.put("Table.selectionBackground", new Color(80, 80, 80));
+            UIManager.put("Table.selectionForeground", new Color(255, 255, 255));
+            UIManager.put("Table.gridColor", new Color(70, 70, 70));
+            
+            UIManager.put("TextField.background", new Color(60, 60, 60));
+            UIManager.put("TextField.foreground", new Color(220, 220, 220));
+            UIManager.put("TextField.caretForeground", new Color(220, 220, 220));
+            
+            UIManager.put("Button.background", new Color(60, 60, 60));
+            UIManager.put("Button.foreground", new Color(220, 220, 220));
+            
+            UIManager.put("Panel.background", new Color(50, 50, 50));
+            UIManager.put("Panel.foreground", new Color(220, 220, 220));
+            
+            UIManager.put("Label.foreground", new Color(220, 220, 220));
+            
+            UIManager.put("List.background", new Color(60, 60, 60));
+            UIManager.put("List.foreground", new Color(220, 220, 220));
+            UIManager.put("List.selectionBackground", new Color(80, 80, 80));
+            UIManager.put("List.selectionForeground", new Color(255, 255, 255));
+            
+            UIManager.put("TitledBorder.titleColor", new Color(220, 220, 220));
+            UIManager.put("MenuBar.background", new Color(60, 60, 60));
+            UIManager.put("MenuBar.foreground", Color.WHITE);
+            UIManager.put("Menu.background", new Color(60, 60, 60));
+            UIManager.put("Menu.foreground", Color.WHITE);
+            UIManager.put("MenuItem.background", new Color(60, 60, 60));
+            UIManager.put("MenuItem.foreground", Color.WHITE);
+            
             SwingUtilities.updateComponentTreeUI(this);
         } catch (Exception e) {
             logger.log(Level.WARNING, "Errore nell'applicazione del tema", e);
@@ -673,19 +619,7 @@ public class LuceneGUI extends JFrame {
         }
     }
     
-    /**
-     * Cambia la lingua dell'interfaccia
-     */
-    private void changeLanguage(Locale locale) {
-        currentLocale = locale;
-        initializeLocalization();
-        
-        // Riavvio necessario per applicare le modifiche
-        JOptionPane.showMessageDialog(this,
-                messages.getString("dialog.languageChanged.content"),
-                messages.getString("dialog.languageChanged.title"),
-                JOptionPane.INFORMATION_MESSAGE);
-    }
+
     
     /**
      * Mostra la finestra di aiuto

@@ -78,9 +78,7 @@ L'interfaccia grafica offre:
 - Campo di ricerca con validazione in tempo reale
 - Opzioni per filtrare la ricerca per nome file e/o contenuto
 - Visualizzazione dei risultati in una tabella con nome file, snippet e punteggio
-- Tema scuro predefinito per una migliore leggibilità
 - Sezione per salvare e riutilizzare query preimpostate
-- Supporto per più lingue (italiano e inglese)
 - Scorciatoie da tastiera per le operazioni comuni
 
 ## Esempi di Query
@@ -125,9 +123,6 @@ Il sistema di ricerca supporta:
 
 ## Funzionalità dell'Interfaccia Grafica
 
-### Tema Scuro
-- L'interfaccia utilizza un tema scuro predefinito per ridurre l'affaticamento visivo
-- Tutti i componenti sono ottimizzati per la leggibilità con colori contrastanti
 
 ### Opzioni di Ricerca Avanzate
 - Checkbox interattivi per filtrare la ricerca per nome file e/o contenuto
