@@ -37,21 +37,6 @@ public class Main {
             indexer.getMetrics().saveJsonReport(reportDir + "/latest_report.json");
             indexer.getMetrics().saveCsvReport(reportDir + "/latest_report.csv");
             
-            // Configurazione per GitHub (da personalizzare con i propri dati)
-            // Per utilizzare l'integrazione con GitHub, decommentare il codice seguente
-            // e inserire i propri dati di accesso
-            /*
-            String repoOwner = "username"; // Inserire il proprio username GitHub
-            String repoName = "repo-name"; // Inserire il nome del repository
-            String branchName = "main";    // Inserire il nome del branch
-            String githubToken = "";       // Inserire il token di accesso GitHub
-            
-            GitHubReporter githubReporter = new GitHubReporter(
-                repoOwner, repoName, branchName, githubToken, reportDir);
-            githubReporter.saveReportToGitHub(indexer.getMetrics());
-            githubReporter.updateTechnicalSheet(indexer.getMetrics());
-            */
-            
             indexer.close();
             System.out.println("Indicizzazione completata. " + numIndexed + " file indicizzati.");
 

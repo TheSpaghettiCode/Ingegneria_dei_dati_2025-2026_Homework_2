@@ -2,14 +2,13 @@
 
 ## Architettura del Sistema
 
-Il sistema di ricerca è composto da sei componenti principali:
+Il sistema di ricerca è composto da cinque componenti principali:
 
 1. **Indexer**: Responsabile dell'indicizzazione dei file di testo
 2. **Searcher**: Gestisce le query di ricerca e restituisce i risultati
 3. **Main**: Interfaccia utente a riga di comando
 4. **IndexingMetrics**: Sistema di misurazione e analisi delle prestazioni
 5. **MetricsReporter**: Visualizzazione e reporting delle metriche
-6. **GitHubReporter**: Integrazione con GitHub per il salvataggio dei report
 
 ## Dettagli Implementativi
 
@@ -142,61 +141,9 @@ public void showGraphicalReport() {
 }
 ```
 
-### GitHubReporter
 
-La classe `GitHubReporter` fornisce:
-- Integrazione con l'API di GitHub per il salvataggio dei report
-- Aggiornamento automatico di una scheda tecnica in formato Markdown
-- Gestione dell'autenticazione e delle operazioni di commit
 
-```java
-// Salvataggio di un report su GitHub
-public boolean saveReportToGitHub(IndexingMetrics metrics) {
-    try {
-        // Genera il nome del file con timestamp
-        String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
-        String fileName = "indexing_report_" + timestamp + ".json";
-        
-        // Salva il report localmente
-        String localFilePath = reportPath + "/" + fileName;
-        metrics.saveJsonReport(localFilePath);
-        
-        // Carica il file su GitHub
-        return uploadFileToGitHub(localFilePath, "reports/" + fileName, 
-                "Aggiunto report di indicizzazione " + timestamp);
-        
-    } catch (Exception e) {
-        System.err.println("Errore nel salvataggio del report su GitHub: " + e.getMessage());
-        return false;
-    }
-}
 
-// Aggiornamento della scheda tecnica
-public boolean updateTechnicalSheet(IndexingMetrics metrics) {
-    try {
-        // Genera il contenuto della scheda tecnica
-        StringBuilder content = new StringBuilder();
-        content.append("# Scheda Tecnica - Metriche di Indicizzazione\n\n");
-        content.append("## Ultimo aggiornamento: ")
-              .append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-              .append("\n\n");
-        
-        // Aggiunge le statistiche di indicizzazione
-        content.append("## Statistiche di indicizzazione\n\n");
-        content.append("| Metrica | Valore |\n");
-        content.append("|---------|--------|\n");
-        content.append("| File totali elaborati | ").append(metrics.getTotalFiles()).append(" |\n");
-        // ... altre metriche ...
-        
-        // Carica la scheda tecnica su GitHub
-        return uploadFileToGitHub(localFilePath, "TECHNICAL_SHEET.md", 
-                "Aggiornamento scheda tecnica con metriche di indicizzazione");
-        
-    } catch (Exception e) {
-        System.err.println("Errore nell'aggiornamento della scheda tecnica: " + e.getMessage());
-        return false;
-    }
-}
 ```
 
 ## Algoritmi e Strutture Dati
